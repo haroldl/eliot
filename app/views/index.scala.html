@@ -2,6 +2,12 @@
 
 @main("Welcome to Play") {
 
-    @play20.welcome(message)
+    @message
 
+    <br />
+
+    <form action="/search" method="POST">
+        <input type="text" name="q"></input>
+        <input type="submit"></input>
+    </form>
 }

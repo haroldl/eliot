@@ -2,3 +2,9 @@ This is your new Play application
 =================================
 
 This file will be packaged with your application, when using `activator dist`.
+
+
+Debugging
+---------
+
+./activator -jvm-debug 9999 run
