@@ -1,15 +1,20 @@
-@(query: String, handles: Seq[controllers.Application.TwitterUser])
+@(query: String, users: Seq[controllers.Application.TwitterUser])
 
 @main("Search Results") {
     Search results for "@query":
     <br />
     <table>
-        @for(handle <- handles) {
+        @for(user <- users) {
         <tr>
             <td><input type="submit" name="follow" value="Follow"></input></td>
-            <td><a target="#" href="https://twitter.com/@handle.handle">@@@handle.handle</a></td>
-            <td>@handle.userName</td>
-            <td>@handle.location</td>
+            <td><a target="#" href="https://twitter.com/@user.handle">@@@user.handle</a></td>
+            <td>@user.userName</td>
+            <td>@user.description</td>
+            <td>@user.location</td>
+            <td style="text-align:right">@user.followingStr</td>
+            <td style="text-align:right">@user.followersStr</td>
+            <td>@user.ratioFollowingToFollowers</td>
+            <td>@user.followed</td>
         </tr>
         }
     </table>
