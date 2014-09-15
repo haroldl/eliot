@@ -33,12 +33,18 @@ object Application extends Controller {
         case Some(q) => {
           val searchReq1 = searchUsers(q, 1)
           val searchReq2 = searchUsers(q, 2)
+          val searchReq3 = searchUsers(q, 3)
+          val searchReq4 = searchUsers(q, 4)
+          val searchReq5 = searchUsers(q, 5)
           for {
             users1 <- searchReq1
             users2 <- searchReq2
+            users3 <- searchReq3
+            users4 <- searchReq4
+            users5 <- searchReq5
           } yield {
-            val users = (users1 ++ users2) map TwitterUser
-            Ok(views.html.search(q, users))
+            val users = (users1 ++ users2 ++ users3 ++ users4 ++ users5) map TwitterUser filter { u => !u.followed } sortBy { _.ratioFollowingToFollowers }
+            Ok(views.html.search(q, users.reverse))
           }
         }
       }

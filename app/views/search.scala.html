@@ -1,9 +1,19 @@
 @(query: String, users: Seq[controllers.Application.TwitterUser])
 
 @main("Search Results") {
-    Search results for "@query":
+    <h3>Search results for "@query"</h3>
     <br />
     <table>
+        <tr>
+            <th></th>
+            <th>Handle</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Location</th>
+            <th>Following</th>
+            <th>Followers</th>
+            <th>Following/ Followers</th>
+        </tr>
         @for(user <- users) {
         <tr>
             <td><input type="submit" name="follow" value="Follow"></input></td>
@@ -13,8 +23,7 @@
             <td>@user.location</td>
             <td style="text-align:right">@user.followingStr</td>
             <td style="text-align:right">@user.followersStr</td>
-            <td>@user.ratioFollowingToFollowers</td>
-            <td>@user.followed</td>
+            <td style="text-align:right">@{"%.2f".format(user.ratioFollowingToFollowers)}</td>
         </tr>
         }
     </table>
