@@ -8,3 +8,10 @@ Debugging
 ---------
 
 ./activator -jvm-debug 9999 run
+
+
+Running in prod
+---------------
+
+./target/universal/stage/bin/eliot
+
